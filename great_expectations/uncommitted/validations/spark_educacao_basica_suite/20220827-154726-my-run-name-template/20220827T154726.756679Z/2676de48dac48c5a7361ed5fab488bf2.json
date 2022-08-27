@@ -1,0 +1,33 @@
+{
+  "evaluation_parameters": {},
+  "meta": {
+    "active_batch_definition": {
+      "batch_identifiers": {},
+      "data_asset_name": "Educacao_Basica_2018 - Matricula_Norte.csv",
+      "data_connector_name": "default_inferred_data_connector_name",
+      "datasource_name": "spark_local"
+    },
+    "batch_markers": {
+      "ge_load_time": "20220827T184726.767211Z"
+    },
+    "batch_spec": {
+      "path": "/mnt/c/Users/junin/Desktop/Estudos/great-expectations/POC/great_expectations/../data/Educacao_Basica_2018 - Matricula_Norte.csv"
+    },
+    "checkpoint_name": "validate_educacao_spark",
+    "expectation_suite_name": "spark_educacao_basica_suite",
+    "great_expectations_version": "0.15.17",
+    "run_id": {
+      "run_name": "20220827-154726-my-run-name-template",
+      "run_time": "2022-08-27T15:47:26.756679+00:00"
+    },
+    "validation_time": "20220827T184727.064931Z"
+  },
+  "results": [],
+  "statistics": {
+    "evaluated_expectations": 0,
+    "success_percent": null,
+    "successful_expectations": 0,
+    "unsuccessful_expectations": 0
+  },
+  "success": true
+}

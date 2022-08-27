@@ -14,96 +14,18 @@ config_version: 3.0
 # You can use the CLI command `great_expectations datasource new` to help you
 # add a new datasource. Read more at https://docs.greatexpectations.io/docs/guides/connecting_to_your_data/connect_to_data_overview
 datasources:
-  taxi_datasource_csv:
+  my_spark_dataframe:
+    execution_engine:
+      module_name: great_expectations.execution_engine
+      class_name: SparkDFExecutionEngine
     module_name: great_expectations.datasource
+    class_name: Datasource
     data_connectors:
-      default_inferred_data_connector_name:
-        module_name: great_expectations.datasource.data_connector
-        class_name: InferredAssetFilesystemDataConnector
-        default_regex:
-          group_names:
-            - data_asset_name
-          pattern: (.*)
-        base_directory: ../data
       default_runtime_data_connector_name:
         module_name: great_expectations.datasource.data_connector
         class_name: RuntimeDataConnector
-        assets:
-          my_runtime_asset_name:
-            module_name: great_expectations.datasource.data_connector.asset
-            batch_identifiers:
-              - runtime_batch_identifier_name
-            class_name: Asset
-    class_name: Datasource
-    execution_engine:
-      module_name: great_expectations.execution_engine
-      class_name: PandasExecutionEngine
-  master:
-    module_name: great_expectations.datasource
-    data_connectors:
-      default_runtime_data_connector_name:
-        module_name: great_expectations.datasource.data_connector
         batch_identifiers:
-          - default_identifier_name
-        class_name: RuntimeDataConnector
-      default_inferred_data_connector_name:
-        include_schema_name: true
-        module_name: great_expectations.datasource.data_connector
-        class_name: InferredAssetSqlDataConnector
-    class_name: Datasource
-    execution_engine:
-      credentials:
-        host: 
-        port: '5439'
-        username: 
-        password: 
-        database: master
-        schema_name: refined_financial_reconciliation
-        query:
-          sslmode: prefer
-        drivername: postgresql+psycopg2
-      module_name: great_expectations.execution_engine
-      class_name: SqlAlchemyExecutionEngine
-  my_s3_datasource:
-    module_name: great_expectations.datasource
-    data_connectors:
-      default_runtime_data_connector_name:
-        module_name: great_expectations.datasource.data_connector
-        batch_identifiers:
-          - default_identifier_name
-        class_name: RuntimeDataConnector
-      default_inferred_data_connector_name:
-        module_name: great_expectations.datasource.data_connector
-        class_name: InferredAssetS3DataConnector
-        bucket: s3-great-expectations
-        default_regex:
-          pattern: (.*)\.csv
-          group_names:
-            - data_set_edi
-    class_name: Datasource
-    execution_engine:
-      module_name: great_expectations.execution_engine
-      class_name: PandasExecutionEngine
-  edi_datasource:
-    module_name: great_expectations.datasource
-    data_connectors:
-      default_runtime_data_connector_name:
-        module_name: great_expectations.datasource.data_connector
-        batch_identifiers:
-          - default_identifier_name
-        class_name: RuntimeDataConnector
-      default_inferred_data_connector_name:
-        module_name: great_expectations.datasource.data_connector
-        class_name: InferredAssetS3DataConnector
-        bucket: s3-great-expectations
-        default_regex:
-          pattern: (.*)\.csv
-          group_names:
-            - data_asset_name
-    class_name: Datasource
-    execution_engine:
-      module_name: great_expectations.execution_engine
-      class_name: PandasExecutionEngine
+          - batch_id
 config_variables_file_path: uncommitted/config_variables.yml
 
 # The plugins_directory will be added to your python path for custom modules
@@ -170,6 +92,6 @@ data_docs_sites:
       class_name: DefaultSiteIndexBuilder
 
 anonymous_usage_statistics:
-  data_context_id: 21301963-698d-46f6-8b8c-0ea4de05a2bd
   enabled: true
+  data_context_id: 44b37493-aeee-4f16-87c9-4965b50e82b1
 notebooks:
